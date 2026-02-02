@@ -17,7 +17,7 @@ namespace ProjetPrincipale
 
         private void button2_Click(object sender, EventArgs e)
         {
-            SecondeFenetre f = new SecondeFenetre();
+            Form2 f = new Form2();
             f.Show();
             this.Hide();
 
