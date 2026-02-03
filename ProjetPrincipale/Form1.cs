@@ -45,7 +45,9 @@ namespace ProjetPrincipale
 
         private void barreDeProgressionToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            MethodeNonImpl(sender, e);
+            BarreDeProgression f = new BarreDeProgression();
+            f.ShowDialog();
+
 
         }
 
