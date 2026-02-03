@@ -22,6 +22,45 @@ namespace ProjetPrincipale
             this.Hide();
 
         }
+
+        //travaille 2
+
+        private void MethodeNonImpl(object sender, EventArgs e)
+        {
+            MessageBox.Show("Cette fonctionnalité n'est pas encore implémentée.");
+        }
+
+
+        private void quitterToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Close();
+
+        }
+
+        private void listeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MethodeNonImpl(sender, e);
+
+        }
+
+        private void barreDeProgressionToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MethodeNonImpl(sender, e);
+
+        }
+
+        private void editeurToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MethodeNonImpl(sender, e);
+
+        }
+
+        private void aProposToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FenetreApropos f = new FenetreApropos();
+            f.ShowDialog();
+
+        }
     }
 }
 
