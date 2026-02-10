@@ -40,13 +40,14 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(319, 9);
+            label1.Location = new Point(332, 9);
             label1.Margin = new Padding(4, 0, 4, 0);
             label1.Name = "label1";
             label1.Size = new Size(228, 33);
             label1.TabIndex = 0;
             label1.Text = "Barre de progression";
             label1.TextAlign = ContentAlignment.MiddleCenter;
+            label1.Click += label1_Click;
             // 
             // label2
             // 

@@ -39,7 +39,9 @@ namespace ProjetPrincipale
 
         private void listeToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            MethodeNonImpl(sender, e);
+            EcranListe f = new EcranListe();
+            f.ShowDialog();
+
 
         }
 
