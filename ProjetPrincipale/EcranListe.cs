@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Runtime.InteropServices;
+
 
 namespace ProjetPrincipale
 {
@@ -17,9 +19,21 @@ namespace ProjetPrincipale
         int indexEnModification = -1;
 
 
+        // API Windows : SendMessage pour ListBox
+        [DllImport("user32.dll", CharSet = CharSet.Auto)]
+        private static extern IntPtr SendMessage(IntPtr hWnd, int msg, IntPtr wParam, IntPtr lParam);
+
+        private const int smLire = 0x0199;   // LB_GETITEMDATA
+        private const int smEcrire = 0x019A; // LB_SETITEMDATA
+
+        // Compteur pour la donnée cachée (numéro d'encodage)
+        int compteurEncodage = 1;
+
         public EcranListe()
         {
             InitializeComponent();
+            lbPersonne.Sorted = true;
+
 
         }
 
@@ -37,11 +51,11 @@ namespace ProjetPrincipale
         {
             if (etat)
             {
-                // Mode après CONFIRMER
+                // Mode après confirme
                 lbPersonne.Enabled = true;     // actif
-                bmodifier.Enabled = true;      // actif
+                bmodifier.Enabled = true;    
 
-                bAjouter.Enabled = false;
+                bAjouter.Enabled = true;
                 bSupprimer.Enabled = false;
                 bOuvrir.Enabled = false;
                 bEnregistrer.Enabled = false;
@@ -52,7 +66,7 @@ namespace ProjetPrincipale
             }
             else
             {
-                // Mode AJOUTER ou MODIFIER
+                
                 lbPersonne.Enabled = false;
                 bmodifier.Enabled = false;
 
@@ -75,6 +89,8 @@ namespace ProjetPrincipale
             cbQualiter.SelectedIndex = 0;
             Activer(false);
 
+
+
         }
 
         private void bSupprimer_Click(object sender, EventArgs e)
@@ -92,20 +108,30 @@ namespace ProjetPrincipale
 
             if (modeModification)
             {
-                // MODIFIER
+                // modifie
                 lbPersonne.Items[indexEnModification] = ligne;
             }
             else
             {
-                // AJOUTER
-                lbPersonne.Items.Add(ligne);
+                // ajouter
+                int index = lbPersonne.Items.Add(ligne);
+
+                // donnée cache
+                SendMessage(
+                    lbPersonne.Handle,
+                    smEcrire,
+                    (IntPtr)index,
+                    (IntPtr)compteurEncodage
+                );
+
+                compteurEncodage++;
             }
 
-            // Réinitialiser le mode
             modeModification = false;
             indexEnModification = -1;
 
             Activer(true);
+
 
 
         }
@@ -143,13 +169,25 @@ namespace ProjetPrincipale
 
         private void lbPersonne_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (lbPersonne.SelectedIndex >= 0)
-            {
-                string texte = lbPersonne.SelectedItem.ToString();
-                int index = lbPersonne.SelectedIndex;
+            int index = lbPersonne.SelectedIndex;
+            if (index < 0) return;
 
-                MessageBox.Show($"Ligne {index} : {texte}");
-            }
+            string texte = lbPersonne.SelectedItem.ToString();
+
+            // lire la donné caché
+            int code = (int)SendMessage(
+                lbPersonne.Handle,
+                smLire,
+                (IntPtr)index,
+                IntPtr.Zero
+            );
+
+            MessageBox.Show(
+                $"Index : {index}\n" +
+                $"Texte : {texte}\n" +
+                $"Donnée cachée : {code}"
+            );
+
 
         }
 
