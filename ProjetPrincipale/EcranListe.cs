@@ -19,14 +19,14 @@ namespace ProjetPrincipale
         int indexEnModification = -1;
 
 
-        // API Windows : SendMessage pour ListBox
+        // API Windows
         [DllImport("user32.dll", CharSet = CharSet.Auto)]
         private static extern IntPtr SendMessage(IntPtr hWnd, int msg, IntPtr wParam, IntPtr lParam);
 
-        private const int smLire = 0x0199;   // LB_GETITEMDATA
-        private const int smEcrire = 0x019A; // LB_SETITEMDATA
+        private const int smLire = 0x0199;   
+        private const int smEcrire = 0x019A; 
 
-        // Compteur pour la donnée cachée (numéro d'encodage)
+        // Compteur pour la donné caché (numéro d'encodage)
         int compteurEncodage = 1;
 
         public EcranListe()
@@ -56,9 +56,9 @@ namespace ProjetPrincipale
                 bmodifier.Enabled = true;    
 
                 bAjouter.Enabled = true;
-                bSupprimer.Enabled = false;
+                bSupprimer.Enabled = true;
                 bOuvrir.Enabled = false;
-                bEnregistrer.Enabled = false;
+                bEnregistrer.Enabled = true;
 
                 
                 bConfirmer.Enabled = false;
@@ -96,7 +96,45 @@ namespace ProjetPrincipale
         private void bSupprimer_Click(object sender, EventArgs e)
         {
             if (lbPersonne.SelectedIndex >= 0)
-                lbPersonne.Items.RemoveAt(lbPersonne.SelectedIndex);
+            {
+                int index = lbPersonne.SelectedIndex;
+
+                // Lire la donné cache suprime
+                int codeSupprime = (int)SendMessage(
+                    lbPersonne.Handle,
+                    smLire,
+                    (IntPtr)index,
+                    IntPtr.Zero
+                );
+
+                // Supprime lélement
+                lbPersonne.Items.RemoveAt(index);
+
+                // Réorganise les donné caché
+                for (int i = 0; i < lbPersonne.Items.Count; i++)
+                {
+                    int code = (int)SendMessage(
+                        lbPersonne.Handle,
+                        smLire,
+                        (IntPtr)i,
+                        IntPtr.Zero
+                    );
+
+                    if (code > codeSupprime)
+                    {
+                        SendMessage(
+                            lbPersonne.Handle,
+                            smEcrire,
+                            (IntPtr)i,
+                            (IntPtr)(code - 1)
+                        );
+                    }
+                }
+
+                // Metre a jour le compteur
+                compteurEncodage--;
+            }
+
 
         }
 
@@ -108,15 +146,15 @@ namespace ProjetPrincipale
 
             if (modeModification)
             {
-                // modifie
+                // modifi
                 lbPersonne.Items[indexEnModification] = ligne;
             }
             else
             {
-                // ajouter
+                // ajoute
                 int index = lbPersonne.Items.Add(ligne);
 
-                // donnée cache
+                // donné cache
                 SendMessage(
                     lbPersonne.Handle,
                     smEcrire,
@@ -147,8 +185,32 @@ namespace ProjetPrincipale
             {
                 NomFichier = ofdOuvrir.FileName;
                 lbPersonne.Items.Clear();
-                lbPersonne.Items.AddRange(System.IO.File.ReadAllLines(NomFichier));
+
+                string[] lignes = System.IO.File.ReadAllLines(NomFichier);
+
+                foreach (string ligne in lignes)
+                {
+                    int pos = ligne.LastIndexOf("#");
+
+                    string texte = ligne.Substring(0, pos);
+                    int code = int.Parse(ligne.Substring(pos + 1));
+
+                    int index = lbPersonne.Items.Add(texte);
+
+                    // Remettre la donné caché
+                    SendMessage(
+                        lbPersonne.Handle,
+                        smEcrire,
+                        (IntPtr)index,
+                        (IntPtr)code
+                    );
+
+                    // Mettre à jour le compteur pour les prochain ajout
+                    if (code >= compteurEncodage)
+                        compteurEncodage = code + 1;
+                }
             }
+
 
         }
 
@@ -159,11 +221,26 @@ namespace ProjetPrincipale
                 NomFichier = sfdEnregistrer.FileName;
 
                 List<string> lignes = new List<string>();
-                foreach (var item in lbPersonne.Items)
-                    lignes.Add(item.ToString());
+
+                for (int i = 0; i < lbPersonne.Items.Count; i++)
+                {
+                    string texte = lbPersonne.Items[i].ToString();
+
+                    // Lire la donné caché
+                    int code = (int)SendMessage(
+                        lbPersonne.Handle,
+                        smLire,
+                        (IntPtr)i,
+                        IntPtr.Zero
+                    );
+
+                    // Ajouter dans le fichier
+                    lignes.Add(texte + "#" + code);
+                }
 
                 System.IO.File.WriteAllLines(NomFichier, lignes);
             }
+
 
         }
 
