@@ -55,7 +55,9 @@ namespace ProjetPrincipale
 
         private void editeurToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            MethodeNonImpl(sender, e);
+            EcranEditeur f = new EcranEditeur();
+            f.Show();
+
 
         }
 
