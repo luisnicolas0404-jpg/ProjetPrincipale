@@ -67,6 +67,18 @@ namespace ProjetPrincipale
             f.ShowDialog();
 
         }
+
+        private void spirographeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Spirographe f = new Spirographe();
+            f.ShowDialog();
+        }
+
+        private void horlogeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Horloge f = new Horloge();
+            f.ShowDialog();
+        }
     }
 }
 

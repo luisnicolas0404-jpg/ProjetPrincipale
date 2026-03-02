@@ -40,8 +40,10 @@
             quitterToolStripMenuItem = new ToolStripMenuItem();
             applicationToolStripMenuItem = new ToolStripMenuItem();
             editeurToolStripMenuItem = new ToolStripMenuItem();
+            spirographeToolStripMenuItem = new ToolStripMenuItem();
             aideToolStripMenuItem = new ToolStripMenuItem();
             aProposToolStripMenuItem = new ToolStripMenuItem();
+            horlogeToolStripMenuItem = new ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             menuStrip1.SuspendLayout();
@@ -129,7 +131,7 @@
             // 
             // applicationToolStripMenuItem
             // 
-            applicationToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { editeurToolStripMenuItem });
+            applicationToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { editeurToolStripMenuItem, spirographeToolStripMenuItem, horlogeToolStripMenuItem });
             applicationToolStripMenuItem.Name = "applicationToolStripMenuItem";
             applicationToolStripMenuItem.Size = new Size(115, 29);
             applicationToolStripMenuItem.Text = "application";
@@ -137,9 +139,16 @@
             // editeurToolStripMenuItem
             // 
             editeurToolStripMenuItem.Name = "editeurToolStripMenuItem";
-            editeurToolStripMenuItem.Size = new Size(169, 34);
+            editeurToolStripMenuItem.Size = new Size(270, 34);
             editeurToolStripMenuItem.Text = "Editeur";
             editeurToolStripMenuItem.Click += editeurToolStripMenuItem_Click;
+            // 
+            // spirographeToolStripMenuItem
+            // 
+            spirographeToolStripMenuItem.Name = "spirographeToolStripMenuItem";
+            spirographeToolStripMenuItem.Size = new Size(270, 34);
+            spirographeToolStripMenuItem.Text = "Spirographe";
+            spirographeToolStripMenuItem.Click += spirographeToolStripMenuItem_Click;
             // 
             // aideToolStripMenuItem
             // 
@@ -151,9 +160,16 @@
             // aProposToolStripMenuItem
             // 
             aProposToolStripMenuItem.Name = "aProposToolStripMenuItem";
-            aProposToolStripMenuItem.Size = new Size(270, 34);
+            aProposToolStripMenuItem.Size = new Size(189, 34);
             aProposToolStripMenuItem.Text = "A propos";
             aProposToolStripMenuItem.Click += aProposToolStripMenuItem_Click;
+            // 
+            // horlogeToolStripMenuItem
+            // 
+            horlogeToolStripMenuItem.Name = "horlogeToolStripMenuItem";
+            horlogeToolStripMenuItem.Size = new Size(270, 34);
+            horlogeToolStripMenuItem.Text = "Horloge";
+            horlogeToolStripMenuItem.Click += horlogeToolStripMenuItem_Click;
             // 
             // Form1
             // 
@@ -191,5 +207,7 @@
         private ToolStripMenuItem aideToolStripMenuItem;
         private ToolStripMenuItem editeurToolStripMenuItem;
         private ToolStripMenuItem aProposToolStripMenuItem;
+        private ToolStripMenuItem spirographeToolStripMenuItem;
+        private ToolStripMenuItem horlogeToolStripMenuItem;
     }
 }
