@@ -79,6 +79,12 @@ namespace ProjetPrincipale
             Horloge f = new Horloge();
             f.ShowDialog();
         }
+
+        private void monitoringToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            EcranClavierSouris f = new EcranClavierSouris();
+            f.ShowDialog();
+        }
     }
 }
 
