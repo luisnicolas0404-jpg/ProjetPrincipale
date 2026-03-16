@@ -85,6 +85,12 @@ namespace ProjetPrincipale
             EcranClavierSouris f = new EcranClavierSouris();
             f.ShowDialog();
         }
+
+        private void exploreureToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            EcranExploreure f = new EcranExploreure();
+            f.ShowDialog();
+        }
     }
 }
 
