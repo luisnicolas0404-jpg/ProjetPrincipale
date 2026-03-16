@@ -63,7 +63,7 @@ namespace ProjetPrincipale
         {
             string chemin = e.Node.Tag.ToString();
 
-            // Cas spécial : Poste de travail (si tu l’as ajouté)
+            
             if (chemin == "Poste de travail")
                 return;
 
