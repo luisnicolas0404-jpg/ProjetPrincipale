@@ -1,0 +1,8 @@
+﻿DROP TABLE [Table];
+
+CREATE TABLE [Table]
+(
+    NumCli INT IDENTITY(1,1) PRIMARY KEY,
+    Prenom NVARCHAR(50),
+    Nom NVARCHAR(50)
+);

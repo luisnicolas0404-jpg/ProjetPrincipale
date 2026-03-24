@@ -43,9 +43,10 @@
             spirographeToolStripMenuItem = new ToolStripMenuItem();
             horlogeToolStripMenuItem = new ToolStripMenuItem();
             monitoringToolStripMenuItem = new ToolStripMenuItem();
+            exploreureToolStripMenuItem = new ToolStripMenuItem();
             aideToolStripMenuItem = new ToolStripMenuItem();
             aProposToolStripMenuItem = new ToolStripMenuItem();
-            exploreureToolStripMenuItem = new ToolStripMenuItem();
+            basseDeDonnéesToolStripMenuItem = new ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             menuStrip1.SuspendLayout();
@@ -133,7 +134,7 @@
             // 
             // applicationToolStripMenuItem
             // 
-            applicationToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { editeurToolStripMenuItem, spirographeToolStripMenuItem, horlogeToolStripMenuItem, monitoringToolStripMenuItem, exploreureToolStripMenuItem });
+            applicationToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { editeurToolStripMenuItem, spirographeToolStripMenuItem, horlogeToolStripMenuItem, monitoringToolStripMenuItem, exploreureToolStripMenuItem, basseDeDonnéesToolStripMenuItem });
             applicationToolStripMenuItem.Name = "applicationToolStripMenuItem";
             applicationToolStripMenuItem.Size = new Size(115, 29);
             applicationToolStripMenuItem.Text = "application";
@@ -166,6 +167,13 @@
             monitoringToolStripMenuItem.Text = "Monitoring";
             monitoringToolStripMenuItem.Click += monitoringToolStripMenuItem_Click;
             // 
+            // exploreureToolStripMenuItem
+            // 
+            exploreureToolStripMenuItem.Name = "exploreureToolStripMenuItem";
+            exploreureToolStripMenuItem.Size = new Size(270, 34);
+            exploreureToolStripMenuItem.Text = "Exploreure";
+            exploreureToolStripMenuItem.Click += exploreureToolStripMenuItem_Click;
+            // 
             // aideToolStripMenuItem
             // 
             aideToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { aProposToolStripMenuItem });
@@ -180,12 +188,12 @@
             aProposToolStripMenuItem.Text = "A propos";
             aProposToolStripMenuItem.Click += aProposToolStripMenuItem_Click;
             // 
-            // exploreureToolStripMenuItem
+            // basseDeDonnéesToolStripMenuItem
             // 
-            exploreureToolStripMenuItem.Name = "exploreureToolStripMenuItem";
-            exploreureToolStripMenuItem.Size = new Size(270, 34);
-            exploreureToolStripMenuItem.Text = "Exploreure";
-            exploreureToolStripMenuItem.Click += exploreureToolStripMenuItem_Click;
+            basseDeDonnéesToolStripMenuItem.Name = "basseDeDonnéesToolStripMenuItem";
+            basseDeDonnéesToolStripMenuItem.Size = new Size(270, 34);
+            basseDeDonnéesToolStripMenuItem.Text = "Basse de données";
+            basseDeDonnéesToolStripMenuItem.Click += basseDeDonnéesToolStripMenuItem_Click;
             // 
             // Form1
             // 
@@ -227,5 +235,6 @@
         private ToolStripMenuItem horlogeToolStripMenuItem;
         private ToolStripMenuItem monitoringToolStripMenuItem;
         private ToolStripMenuItem exploreureToolStripMenuItem;
+        private ToolStripMenuItem basseDeDonnéesToolStripMenuItem;
     }
 }

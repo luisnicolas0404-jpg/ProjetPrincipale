@@ -91,6 +91,12 @@ namespace ProjetPrincipale
             EcranExploreure f = new EcranExploreure();
             f.ShowDialog();
         }
+
+        private void basseDeDonnéesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            EcranBDDirect f = new EcranBDDirect();
+            f.ShowDialog();
+        }
     }
 }
 
