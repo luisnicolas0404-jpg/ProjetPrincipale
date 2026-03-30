@@ -15,16 +15,16 @@ namespace principale_seance11
     {
         ArrayList alData = new ArrayList();
         Random rnd = new Random();
-        private HistogrammeControl HistogrammeControl1;
+        private HistogrammeControl HistogrammeControl2;
         public Form1()
         {
             InitializeComponent();
 
 
-            histogrammeControl1 = new HistogrammeControl();
-            histogrammeControl1.Location = new Point(10, 250);   // position sur le Form
-            histogrammeControl1.Size = new Size(500, 200);       // taille du contrôle
-            this.Controls.Add(histogrammeControl1);
+            histogrammeControl2 = new HistogrammeControl();
+            histogrammeControl2.Location = new Point(10, 250);   // position sur le Form
+            histogrammeControl2.Size = new Size(500, 200);       // taille du contrôle
+            this.Controls.Add(histogrammeControl2);
 
         }
 
@@ -60,14 +60,14 @@ namespace principale_seance11
             L.Add(new HistoPoint(20, -8));
             L.Add(new HistoPoint(30, 40));
 
-            histogrammeControl1.Data = L;
+            histogrammeControl2.Data = L;
 
-            histogrammeControl1.MinX = 0;
-            histogrammeControl1.MaxX = 30;
-            histogrammeControl1.MinY = -10;
-            histogrammeControl1.MaxY = 40;
+            histogrammeControl2.MinX = 0;
+            histogrammeControl2.MaxX = 30;
+            histogrammeControl2.MinY = -10;
+            histogrammeControl2.MaxY = 40;
 
-            histogrammeControl1.Invalidate();
+            histogrammeControl2.Invalidate();
 
 
         }

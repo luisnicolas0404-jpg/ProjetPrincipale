@@ -32,6 +32,7 @@
             this.bDessiner = new System.Windows.Forms.Button();
             this.pDessin = new System.Windows.Forms.Panel();
             this.lbMonpoint = new System.Windows.Forms.ListBox();
+            this.histogrammeControl2 = new principale_seance11.HistogrammeControl();
             this.SuspendLayout();
             // 
             // bcreer
@@ -71,11 +72,24 @@
             this.lbMonpoint.Size = new System.Drawing.Size(209, 304);
             this.lbMonpoint.TabIndex = 3;
             // 
+            // histogrammeControl2
+            // 
+            this.histogrammeControl2.Location = new System.Drawing.Point(854, 240);
+            this.histogrammeControl2.MaxX = 100;
+            this.histogrammeControl2.MaxY = 100;
+            this.histogrammeControl2.MinX = 0;
+            this.histogrammeControl2.MinY = -100;
+            this.histogrammeControl2.Name = "histogrammeControl2";
+            this.histogrammeControl2.Size = new System.Drawing.Size(150, 150);
+            this.histogrammeControl2.TabIndex = 4;
+            this.histogrammeControl2.Trait = System.Drawing.Color.Navy;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1467, 752);
+            this.Controls.Add(this.histogrammeControl2);
             this.Controls.Add(this.lbMonpoint);
             this.Controls.Add(this.pDessin);
             this.Controls.Add(this.bDessiner);
@@ -93,7 +107,7 @@
         private System.Windows.Forms.Button bDessiner;
         private System.Windows.Forms.Panel pDessin;
         private System.Windows.Forms.ListBox lbMonpoint;
-        
+        private HistogrammeControl histogrammeControl2;
     }
 }
 
